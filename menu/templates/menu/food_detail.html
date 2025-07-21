@@ -1,0 +1,34 @@
+{% extends 'menu/base.html' %}
+{% block title %}{{ food.name }} Details{% endblock %}
+{% block content %}
+<div class="details-container">
+    <div class="details-header">
+        <img src="{{ food.image.url }}" alt="{{ food.name }}">
+    </div>
+    <div class="details-body">
+        <h1>{{ food.name }}</h1>
+        <p>{{ food.description }}</p>
+        <section>
+            <h2>Ingredients</h2>
+            <ol class="ingredients-list">
+                {% for ing in food.ingredients.all %}
+                <li><i>{{ ing.name }}</i></li>
+                {% endfor %}
+            </ol>
+        </section>
+        <div class="card-actions">
+            <a href="{% url 'menu_list' %}" class="vote-btn">Back to menu</a>
+            {% if user.is_authenticated %}
+            {% if has_voted %}
+            <button class="vote-btn" disabled>Voted</button>
+            {% elif not has_voted_any %}
+            <form action="{% url 'cast_vote' food.pk %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="vote-btn">Vote</button>
+            </form>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

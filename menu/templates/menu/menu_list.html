@@ -1,0 +1,44 @@
+{% extends "menu/base.html" %}
+
+{% load static %}
+
+{% block title %}Menu{% endblock %}
+
+{% block content %}
+<main class="cards-container">
+    {% for food in foods %}
+    <div class="card">
+        {# Image preview or placeholder #}
+        {% if food.image and food.image.url %}
+        <img src="{{ food.image.url }}" alt="{{ food.name }}">
+        {% else %}
+        <img src="{% static 'placeholder.png' %}" alt="No image available">
+        {% endif %}
+        <div class="card-votes">
+            <span class="vote-count">{{ food.votes_count }}</span> voted
+        </div>
+        <div class="card-content">
+            <h2>{{ food.name }}</h2>
+            <p>{{ food.description }}</p>
+            <div class="card-actions">
+                <a href="{% url 'food_detail' food.pk %}" class="ingredients-link">Ingredients</a>
+                {% if user.is_authenticated %}
+                {% if has_voted_any %}
+                <button class="vote-btn" disabled>Voted</button>
+                {% else %}
+                <form action="{% url 'cast_vote' food.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="vote-btn">Vote</button>
+                </form>
+                {% endif %}
+                {% else %}
+                <span class="vote-btn disabled">Login to Vote</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No menu items available.</p>
+    {% endfor %}
+</main>
+{% endblock %}
