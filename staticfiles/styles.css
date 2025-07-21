@@ -1,0 +1,257 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #f9f9f9;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Navbar */
+.navbar {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+}
+
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.auth-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.auth-form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.auth-form .login-btn,
+.signup-btn {
+    background: #00aaff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.auth-form .login-btn:hover,
+.signup-btn:hover {
+    opacity: 0.9;
+}
+
+.auth-form .signup-link {
+    color: #00aaff;
+    font-weight: bold;
+}
+
+/* Cards Container */
+.cards-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    width: 200%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-votes {
+    text-align: right;
+    padding: 0.5rem 1rem;
+    color: #d63447;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.card-content {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h2 {
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    flex: 1;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ingredients-link {
+    font-size: 0.9rem;
+    color: #007bff;
+}
+
+/* Vote Button */
+.vote-btn {
+    display: inline-block;
+    text-align: center;
+    background: #ff6b35;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.vote-btn.disabled {
+    display: inline-block;
+    text-align: center;
+    background: #ff6b35;
+    color: #fff;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.vote-btn:hover {
+    background: #e0552f;
+}
+
+/* Signup Page */
+.signup-container {
+    max-width: 400px;
+    margin: 3rem auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.signup-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-body h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.signup-body label {
+    margin-top: 0.75rem;
+    font-weight: bold;
+}
+
+.signup-body input {
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Detail Page */
+.details-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.details-header img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.details-body {
+    padding: 1rem;
+}
+
+.details-body h1 {
+    margin-bottom: 0.5rem;
+}
+
+.ingredients-list {
+    margin-top: 1rem;
+    padding-left: 1.2rem;
+}
+
+/* Inline login error message */
+.login-error {
+    color: red;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.vote-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Ensure labels sit above inputs */
+.signup-body label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Make inputs full-width under their labels */
+.signup-body input {
+  display: block;
+  width: 100%;
+}
+
+.form-errors, .field-errors {
+  color: red;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
