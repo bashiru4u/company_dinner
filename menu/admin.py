@@ -8,14 +8,21 @@ class IngredientInline(admin.TabularInline):
 
 @admin.register(Food)
 class FoodAdmin(admin.ModelAdmin):
+    # Only these fields will appear on the add/edit form:
+    fields = ('name', 'description', 'image')
+
     list_display = ('name', 'image_thumbnail')
     inlines = [IngredientInline]
-    # Show a small preview in the list
+
     def image_thumbnail(self, obj):
         if obj.image:
-            return format_html('<img src="{}" style="width: 50px; height:auto;"/>', obj.image.url)
+            return format_html(
+                '<img src="{}" style="width: 50px; height:auto;"/>',
+                obj.image.url
+            )
         return '-'
     image_thumbnail.short_description = 'Image'
+
 
   
 
